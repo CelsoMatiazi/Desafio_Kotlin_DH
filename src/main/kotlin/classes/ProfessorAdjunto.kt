@@ -1,9 +1,9 @@
 package classes
 
 class ProfessorAdjunto(
-    val horasDeMentoria: Int,
     nome : String,
     sobrenome: String,
     tempoDeCasa: Int,
-    codProfessor: Int
+    codProfessor: Int,
+    val horasDeMentoria: Int
 ) : Professor(nome, sobrenome, tempoDeCasa, codProfessor)

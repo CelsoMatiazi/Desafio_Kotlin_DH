@@ -16,7 +16,19 @@ fun main() {
     println(curso1 == curso2)
 
 
-    val prof1 = ProfessorTitular("Android", "Almeida", "alencar", 2, 123)
-    val prof2 = ProfessorTitular("Android", "Almeida", "alencar", 2, 123)
+    val prof1 = ProfessorTitular(
+        "Almeida",
+        "alencar",
+        2,
+        123,
+        "Android")
+
+    val prof2 = ProfessorTitular(
+        "AndAlmeidaroid",
+        "alencar",
+        2,
+        123,
+        "Android")
+
     println(prof1 == prof2)
 }
