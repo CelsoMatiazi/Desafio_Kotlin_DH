@@ -1,7 +1,4 @@
-import classes.Aluno
-import classes.Curso
-import classes.Professor
-import classes.ProfessorTitular
+import classes.*
 
 fun main() {
 
@@ -10,10 +7,13 @@ fun main() {
 
     println(aluno1 == aluno2)
 
-    val curso1 = Curso("FullStack", 123)
-    val curso2 = Curso("FullStack2", 123)
+    val prof3 = ProfessorTitular("Romoaldo", "Jose", 2, 124,"matermatica")
+    val prof4 = ProfessorAdjunto("Romildo", "Mustafá", 2, 127,10)
 
-    println(curso1 == curso2)
+    val curso1 = Curso("FullStack", 123, prof3, prof4, 15, listOf(aluno1,aluno2))
+    //val curso2 = Curso("FullStack2", 123)
+
+    //println(curso1 == curso2)
 
 
     val prof1 = ProfessorTitular(
