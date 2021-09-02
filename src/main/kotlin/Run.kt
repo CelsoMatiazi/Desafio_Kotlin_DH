@@ -31,4 +31,9 @@ fun main() {
         "Android")
 
     println(prof1 == prof2)
+
+
+    val matricula = Matricula(aluno1,curso1,)
+
+    println(matricula.dataDaMatricula)
 }
