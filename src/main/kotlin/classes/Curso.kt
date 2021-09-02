@@ -13,4 +13,10 @@ class Curso(
         return (other is Curso && other.codCurso == this.codCurso)
     }
 
+    fun adicionarUmAluno(umAluno: Aluno) : Boolean{ return true }
+
+    fun excluirAluno(umAluno: Aluno) {}
+
+
+
 }
