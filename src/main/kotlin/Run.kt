@@ -2,38 +2,67 @@ import classes.*
 
 fun main() {
 
-    val aluno1 = Aluno("jose", "alencar", 123)
-    val aluno2 = Aluno("jose", "alencar", 123)
+    val alunos = mutableListOf<Aluno>()
+    val professores = mutableListOf<Professor>()
+    val cursos = mutableListOf<Curso>()
+    val matriculas = mutableListOf<Matricula>()
 
-    println(aluno1 == aluno2)
+    val digitalHouseManager = DigitalHouseManager(professores, alunos, cursos, matriculas)
 
-    val prof3 = ProfessorTitular("Romoaldo", "Jose", 2, 124,"matermatica")
-    val prof4 = ProfessorAdjunto("Romildo", "Mustafá", 2, 127,10)
+    digitalHouseManager.registrarProfessorTitular(
+        "Romario",
+        "Rodrigues",
+        1023,
+        "Android",
+        1
+    )
 
-    val curso1 = Curso("FullStack", 123, prof3, prof4, 15, listOf(aluno1,aluno2))
-    //val curso2 = Curso("FullStack2", 123)
-
-    //println(curso1 == curso2)
-
-
-    val prof1 = ProfessorTitular(
-        "Almeida",
-        "alencar",
-        2,
-        123,
-        "Android")
-
-    val prof2 = ProfessorTitular(
-        "AndAlmeidaroid",
-        "alencar",
-        2,
-        123,
-        "Android")
-
-    println(prof1 == prof2)
+    digitalHouseManager.registrarProfessorTitular(
+        "Sergio",
+        "Moura",
+        1283,
+        "FullStack",
+        5
+    )
 
 
-    val matricula = Matricula(aluno1,curso1,)
+    digitalHouseManager.registrarProfessorAdjunto(
+        "Jonatas",
+        "Abreu",
+        574,
+        15
+    )
 
-    println(matricula.dataDaMatricula)
+
+    digitalHouseManager.registrarProfessorAdjunto(
+        "Nathalia",
+        "Lira",
+        476,
+        15
+    )
+
+    digitalHouseManager.registrarCurso("Full Stack", 20001, 3)
+    digitalHouseManager.registrarCurso("Android", 20002, 2)
+
+
+    digitalHouseManager.alocarProfessor(20001,1283, 476)
+    digitalHouseManager.alocarProfessor(20002,1023, 574)
+
+
+    digitalHouseManager.matricularAluno("Celso", "Ricardi", 111)
+    digitalHouseManager.matricularAluno("Zeca", "Pagodinho", 222)
+    digitalHouseManager.matricularAluno("Paco", "De Lucia", 333)
+    digitalHouseManager.matricularAluno("Renival", "Lacerda", 444)
+    digitalHouseManager.matricularAluno("Flavio", "Java", 555)
+
+
+    digitalHouseManager.matricularAluno(333,20001)
+    digitalHouseManager.matricularAluno(444,20001)
+
+    digitalHouseManager.matricularAluno(111,20002)
+    digitalHouseManager.matricularAluno(555,20002)
+    digitalHouseManager.matricularAluno(222,20002)
+
 }
+
+
