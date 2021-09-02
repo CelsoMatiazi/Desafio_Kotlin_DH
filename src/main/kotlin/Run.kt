@@ -1,5 +1,6 @@
 import classes.Aluno
 import classes.Curso
+import classes.Professor
 
 fun main() {
 
@@ -12,4 +13,10 @@ fun main() {
     val curso2 = Curso("FullStack2", 123)
 
     println(curso1 == curso2)
+
+
+    val prof1 = Professor("Rodolfo", "Almeida", 1, 123)
+    val prof2 = Professor("Rodolfo", "Almeida", 1, 123)
+
+    println(prof1 == prof2)
 }
