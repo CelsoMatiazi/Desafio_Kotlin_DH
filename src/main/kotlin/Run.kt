@@ -1,6 +1,7 @@
 import classes.Aluno
 import classes.Curso
 import classes.Professor
+import classes.ProfessorTitular
 
 fun main() {
 
@@ -15,8 +16,7 @@ fun main() {
     println(curso1 == curso2)
 
 
-    val prof1 = Professor("Rodolfo", "Almeida", 1, 123)
-    val prof2 = Professor("Rodolfo", "Almeida", 1, 123)
-
+    val prof1 = ProfessorTitular("Android", "Almeida", "alencar", 2, 123)
+    val prof2 = ProfessorTitular("Android", "Almeida", "alencar", 2, 123)
     println(prof1 == prof2)
 }
