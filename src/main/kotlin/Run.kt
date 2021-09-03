@@ -25,7 +25,6 @@ fun main() {
         5
     )
 
-
     digitalHouseManager.registrarProfessorAdjunto(
         "Jonatas",
         "Abreu",
@@ -64,6 +63,30 @@ fun main() {
     digitalHouseManager.matricularAluno(222,20002)
 
     digitalHouseManager.consultarCurso(333)
+
+
+
+    digitalHouseManager.registrarProfessorTitular(
+        "Zé",
+        "do Caixão",
+        1043,
+        "Coveiro",
+        1
+    )
+
+    println()
+    println("Professores cadastrados")
+    digitalHouseManager.professores.forEach { println("${it.nome} ${it.sobrenome}")  }
+
+    println()
+
+    digitalHouseManager.excluirProfessor(1043)
+    digitalHouseManager.professores.forEach { println("${it.nome} ${it.sobrenome}") }
+
+
+    println()
+    digitalHouseManager.excluirProfessor(1043243)
+    digitalHouseManager.professores.forEach { println("${it.nome} ${it.sobrenome}") }
 
 }
 

@@ -1,5 +1,7 @@
 package classes
 
+import java.lang.Exception
+
 class DigitalHouseManager(
     val professores: MutableList<Professor>,
     val alunos: MutableList<Aluno>,
@@ -8,11 +10,18 @@ class DigitalHouseManager(
 ) {
 
     fun registrarCurso(nome: String, codCurso: Int, qtdMaxAlunos: Int){
-        cursos.add(Curso(
+
+        val curso = Curso(
             nome = nome,
             codCurso = codCurso,
-            qtdMaxAlunos = qtdMaxAlunos)
+            qtdMaxAlunos = qtdMaxAlunos
         )
+
+        if(cursos.contains(curso)){
+            println("Curso ja cadastrado!")
+        }else{
+            cursos.add(curso)
+        }
     }
 
     fun excluirCurso(codCurso: Int){
@@ -29,12 +38,17 @@ class DigitalHouseManager(
         codProfessor: Int,
         qtdDeHoras: Int){
 
-        professores.add(ProfessorAdjunto(
-            nome = nome,
+        val professor = ProfessorAdjunto(nome = nome,
             sobrenome = sobrenome,
             codProfessor = codProfessor,
             horasDeMentoria = qtdDeHoras
-        ))
+        )
+        if(professores.contains(professor)){
+            println("Professor ja cadastrado")
+        }else {
+            professores.add(professor)
+        }
+
     }
 
     fun registrarProfessorTitular(
@@ -44,35 +58,75 @@ class DigitalHouseManager(
         especialidade: String,
         tempoDeCasa: Int){
 
-        professores.add(ProfessorTitular(
-            nome = nome,
-            sobrenome = sobrenome,
-            codProfessor = codProfessor,
-            especialidade =  especialidade,
-            tempoDeCasa = tempoDeCasa
-        ))
+        val professor = ProfessorTitular(
+            nome,
+            sobrenome,
+            tempoDeCasa,
+            codProfessor,
+            especialidade
+        )
+
+        if(professores.contains(professor)){
+            println("Professor ja cadastrado")
+        }else {
+            professores.add(professor)
+        }
 
     }
 
 
     fun excluirProfessor(codProfessor: Int){
-        for(professor in professores){
-            if(professor.codProfessor == codProfessor){
-                professores.remove(professor)
+
+        var professorExiste = false
+
+        for(i in 0 until professores.size){
+            if(professores[i].codProfessor == codProfessor){
+                try {
+                    professorExiste = true;
+                    professores.removeAt(i)
+                }catch (e: Exception){
+                    println("Erro ao excluir")
+                }
             }
         }
+
+        if(!professorExiste){
+            println("Professor não encontrado!!")
+        }
+
+//        for(professor in professores){
+//            if(professor.codProfessor == codProfessor){
+//                println("remove ${professor.nome}")
+//                try {
+//                professores.remove(professor)
+//                }catch (e: Exception){
+//                    println(e)
+//                }
+//            }
+//        }
     }
 
     fun matricularAluno(nome: String, sobrenome: String, codAluno: Int){
-        alunos.add(Aluno(nome, sobrenome, codAluno))
+        val aluno = Aluno(nome, sobrenome, codAluno)
+
+        if(alunos.contains(aluno)){
+            println("Aluno ja matriculado")
+        }else{
+            alunos.add(aluno)
+        }
     }
 
     fun matricularAluno(codAluno: Int, codCurso: Int){
 
+        var cursoExistente = false
+        var alunoExistente = false
+
         for(curso in cursos){
             if(curso.codCurso == codCurso){
+                cursoExistente = true
                 for(aluno in alunos){
                     if(aluno.codAluno == codAluno){
+                        alunoExistente = true
                         if(curso.adicionarUmAluno(aluno)){
                             matriculas.add(Matricula(aluno, curso,))
                             println("O Aluno ${aluno.nome} ${aluno.sobrenome} foi matriculado com SUCESSO no curso de ${curso.nome}!!")
@@ -82,6 +136,13 @@ class DigitalHouseManager(
                     }
                 }
             }
+        }
+
+        if(!alunoExistente && cursoExistente){
+            println("Codigo do aluno invalido")
+        }
+        if(!cursoExistente){
+            println("Codigo do curso invalido")
         }
     }
 
@@ -110,10 +171,17 @@ class DigitalHouseManager(
 
     fun consultarCurso(codAluno: Int){
 
+        var alunoExistente = false
+
         for (matricula in matriculas){
             if(matricula.aluno.codAluno == codAluno){
+                alunoExistente = true
                 println("O aluno ${matricula.aluno.nome} ${matricula.aluno.sobrenome} esta matriculado no curso de ${matricula.curso.nome} ")
             }
+        }
+
+        if(!alunoExistente){
+            println("Codigo do aluno invalido!!")
         }
     }
 
