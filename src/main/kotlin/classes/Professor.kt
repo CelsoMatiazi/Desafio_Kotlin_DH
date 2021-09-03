@@ -9,4 +9,14 @@ abstract class Professor(
     override fun equals(other: Any?): Boolean {
         return (other is Professor && other.codProfessor == this.codProfessor)
     }
+
+    override fun toString(): String {
+        return """
+            
+            Nome: $nome $sobrenome
+            Cod: $codProfessor
+            Tempo de casa: $tempoDeCasa
+     
+        """.trimIndent()
+    }
 }

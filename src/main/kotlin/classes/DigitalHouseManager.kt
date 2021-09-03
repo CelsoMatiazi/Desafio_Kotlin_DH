@@ -1,13 +1,12 @@
 package classes
-
 import java.lang.Exception
 
-class DigitalHouseManager(
-    val professores: MutableList<Professor>,
-    val alunos: MutableList<Aluno>,
-    val cursos: MutableList<Curso>,
-    val matriculas: MutableList<Matricula>
-) {
+class DigitalHouseManager{
+
+    val professores: MutableList<Professor> = mutableListOf()
+    val alunos: MutableList<Aluno> = mutableListOf()
+    val cursos: MutableList<Curso> = mutableListOf()
+    val matriculas: MutableList<Matricula> = mutableListOf()
 
     fun registrarCurso(nome: String, codCurso: Int, qtdMaxAlunos: Int){
 
@@ -25,11 +24,26 @@ class DigitalHouseManager(
     }
 
     fun excluirCurso(codCurso: Int){
-       for(curso in cursos){
-           if(curso.codCurso == codCurso){
-               cursos.remove(curso)
-           }
-       }
+
+        var cursoExiste = false
+
+        for(i in 0 until cursos.size){
+            if(cursos[i].codCurso == codCurso){
+                cursoExiste = true
+                cursos.removeAt(i)
+            }
+        }
+
+        if(!cursoExiste){
+            println("Curso não encontrado")
+        }
+
+//       for(curso in cursos){
+//           if(curso.codCurso == codCurso){
+//               cursos.remove(curso)
+//           }
+//       }
+
     }
 
     fun registrarProfessorAdjunto(
@@ -151,12 +165,19 @@ class DigitalHouseManager(
         codProfessorTitular: Int,
         codProfessorAdjunto: Int){
 
+        var codExiste = false
+        var titularExiste = false
+        var adjuntoExiste = false
+
         for(professorTitular in professores){
             if(professorTitular.codProfessor == codProfessorTitular){
+                titularExiste = true
                 for(professorAdjunto in professores){
                     if(professorAdjunto.codProfessor == codProfessorAdjunto){
+                        adjuntoExiste = true
                         for(curso in cursos){
                             if(curso.codCurso == codCurso){
+                                codExiste = true
                                 curso.professorTitular = professorTitular
                                 curso.professorAdjunto = professorAdjunto
                             }
@@ -164,6 +185,12 @@ class DigitalHouseManager(
                     }
                 }
             }
+        }
+
+        if(codExiste && titularExiste && adjuntoExiste){
+            println("Professores alocados com sucesso")
+        }else{
+            println("Alocação não realizada")
         }
 
     }

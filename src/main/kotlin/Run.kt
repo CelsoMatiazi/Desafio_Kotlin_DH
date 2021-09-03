@@ -2,12 +2,7 @@ import classes.*
 
 fun main() {
 
-    val alunos = mutableListOf<Aluno>()
-    val professores = mutableListOf<Professor>()
-    val cursos = mutableListOf<Curso>()
-    val matriculas = mutableListOf<Matricula>()
-
-    val digitalHouseManager = DigitalHouseManager(professores, alunos, cursos, matriculas)
+    val digitalHouseManager = DigitalHouseManager()
 
     digitalHouseManager.registrarProfessorTitular(
         "Romario",
@@ -79,14 +74,27 @@ fun main() {
     digitalHouseManager.professores.forEach { println("${it.nome} ${it.sobrenome}")  }
 
     println()
-
+    println("Excluindo professor")
     digitalHouseManager.excluirProfessor(1043)
     digitalHouseManager.professores.forEach { println("${it.nome} ${it.sobrenome}") }
 
 
     println()
+    println("Busca por cod invalido")
     digitalHouseManager.excluirProfessor(1043243)
-    digitalHouseManager.professores.forEach { println("${it.nome} ${it.sobrenome}") }
+
+
+
+    println()
+    println("Registrando novo curso")
+    digitalHouseManager.registrarCurso("Flutter", 20004, 3)
+    digitalHouseManager.cursos.forEach { println(it.nome) }
+
+
+    println()
+    println("Excluindo curso")
+    digitalHouseManager.excluirCurso(20004)
+    digitalHouseManager.cursos.forEach { println(it.nome) }
 
 }
 
