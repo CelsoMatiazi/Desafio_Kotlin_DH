@@ -52,7 +52,7 @@ fun main() {
     digitalHouseManager.matricularAluno("Celso", "Ricardi", 111)
     digitalHouseManager.matricularAluno("Zeca", "Pagodinho", 222)
     digitalHouseManager.matricularAluno("Paco", "De Lucia", 333)
-    digitalHouseManager.matricularAluno("Renival", "Lacerda", 444)
+    digitalHouseManager.matricularAluno("Genival", "Lacerda", 444)
     digitalHouseManager.matricularAluno("Flavio", "Java", 555)
 
 
@@ -62,6 +62,8 @@ fun main() {
     digitalHouseManager.matricularAluno(111,20002)
     digitalHouseManager.matricularAluno(555,20002)
     digitalHouseManager.matricularAluno(222,20002)
+
+    digitalHouseManager.consultarCurso(333)
 
 }
 

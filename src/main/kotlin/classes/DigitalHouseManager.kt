@@ -35,7 +35,6 @@ class DigitalHouseManager(
             codProfessor = codProfessor,
             horasDeMentoria = qtdDeHoras
         ))
-
     }
 
     fun registrarProfessorTitular(
@@ -69,15 +68,16 @@ class DigitalHouseManager(
     }
 
     fun matricularAluno(codAluno: Int, codCurso: Int){
+
         for(curso in cursos){
             if(curso.codCurso == codCurso){
                 for(aluno in alunos){
                     if(aluno.codAluno == codAluno){
                         if(curso.adicionarUmAluno(aluno)){
                             matriculas.add(Matricula(aluno, curso,))
-                            println("Aluno matriculado com SUCESSO!!")
+                            println("O Aluno ${aluno.nome} ${aluno.sobrenome} foi matriculado com SUCESSO no curso de ${curso.nome}!!")
                         }else{
-                            println("Matricula não realizada, NÃO HÁ VAGAS!!")
+                            println("A matricula do aluno ${aluno.nome} ${aluno.sobrenome} não foi realizada, NÃO HÁ VAGAS!!")
                         }
                     }
                 }
@@ -100,12 +100,21 @@ class DigitalHouseManager(
                                 curso.professorAdjunto = professorAdjunto
                             }
                         }
-
                     }
                 }
             }
         }
 
+    }
+
+
+    fun consultarCurso(codAluno: Int){
+
+        for (matricula in matriculas){
+            if(matricula.aluno.codAluno == codAluno){
+                println("O aluno ${matricula.aluno.nome} ${matricula.aluno.sobrenome} esta matriculado no curso de ${matricula.curso.nome} ")
+            }
+        }
     }
 
 }

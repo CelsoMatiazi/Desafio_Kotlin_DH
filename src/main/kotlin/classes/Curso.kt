@@ -23,7 +23,7 @@ class Curso(
     }
 
     fun excluirAluno(umAluno: Aluno) {
-        listaDeAlunos?.remove(umAluno)
+        listaDeAlunos.remove(umAluno)
     }
 
 }
