@@ -15,15 +15,27 @@ class Curso(
 
     fun adicionarUmAluno(umAluno: Aluno) : Boolean{
         return if(listaDeAlunos.size < qtdMaxAlunos){
-            listaDeAlunos.add(umAluno)
-            true
+
+            try {
+                listaDeAlunos.add(umAluno)
+                true
+            }catch (e: Exception){
+                println("Erro ao cadastrar novo aluno!!")
+                false
+            }
+
         }else{
             false
         }
     }
 
     fun excluirAluno(umAluno: Aluno) {
+
+        try {
         listaDeAlunos.remove(umAluno)
+        }catch (e: Exception){
+            println("falha ao excluir aluno!!!")
+        }
     }
 
 }

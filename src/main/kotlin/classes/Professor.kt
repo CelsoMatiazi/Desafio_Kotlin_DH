@@ -3,7 +3,7 @@ package classes
 abstract class Professor(
     val nome: String,
     val sobrenome: String,
-    val tempoDeCasa: Int,
+    private val tempoDeCasa: Int,
     val codProfessor: Int) {
 
     override fun equals(other: Any?): Boolean {

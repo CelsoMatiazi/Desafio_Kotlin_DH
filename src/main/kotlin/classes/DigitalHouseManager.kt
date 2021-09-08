@@ -19,7 +19,13 @@ class DigitalHouseManager{
         if(cursos.contains(curso)){
             println("Curso ja cadastrado!")
         }else{
+            try {
             cursos.add(curso)
+            }catch (e: Exception){
+                println("Erro ao cadastrar curso!!")
+            }
+
+
         }
     }
 
@@ -29,8 +35,14 @@ class DigitalHouseManager{
 
         for(i in 0 until cursos.size){
             if(cursos[i].codCurso == codCurso){
+
+                try {
                 cursoExiste = true
                 cursos.removeAt(i)
+                }catch (e: Exception){
+                    println("Erro ao excluir curso!!!")
+                }
+
             }
         }
 
@@ -60,7 +72,12 @@ class DigitalHouseManager{
         if(professores.contains(professor)){
             println("Professor ja cadastrado")
         }else {
+
+            try {
             professores.add(professor)
+            }catch (e: Exception){
+                println("Erro ao cadastrar professor Adjunto!!!")
+            }
         }
 
     }
@@ -83,7 +100,12 @@ class DigitalHouseManager{
         if(professores.contains(professor)){
             println("Professor ja cadastrado")
         }else {
+
+            try {
             professores.add(professor)
+            }catch (e: Exception){
+                println("Erro ao cadastrar Professor Titular!!")
+            }
         }
 
     }
@@ -126,7 +148,12 @@ class DigitalHouseManager{
         if(alunos.contains(aluno)){
             println("Aluno ja matriculado")
         }else{
+
+            try {
             alunos.add(aluno)
+            }catch (e: Exception){
+                println("Erro ao matricular aluno!!!")
+            }
         }
     }
 
@@ -142,8 +169,14 @@ class DigitalHouseManager{
                     if(aluno.codAluno == codAluno){
                         alunoExistente = true
                         if(curso.adicionarUmAluno(aluno)){
+
+                            try {
                             matriculas.add(Matricula(aluno, curso,))
                             println("O Aluno ${aluno.nome} ${aluno.sobrenome} foi matriculado com SUCESSO no curso de ${curso.nome}!!")
+                            }catch (e: Exception){
+                                println("Erro ao matricular aluno!!!")
+                            }
+
                         }else{
                             println("A matricula do aluno ${aluno.nome} ${aluno.sobrenome} não foi realizada, NÃO HÁ VAGAS!!")
                         }
